@@ -26,11 +26,6 @@ export default class App extends Component {
     }, console.log(this.state.playerName))
   }
 
-
-
-
-
-
   render() {
     console.log(this.state)
     return (
