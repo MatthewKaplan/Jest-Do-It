@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import WelcomePage from '../WelcomePage/WelcomePage.js';
+import Header from '../Header/Header.js'
 import '../Styles/Main.scss';
 
 export default class App extends Component {
@@ -9,7 +10,8 @@ export default class App extends Component {
       activePlayer: false,
       playerName: "",
       questions: [],
-      currentQuestion: []
+      currentQuestion: [],
+      correctQuestions: []
     }
   }
 
@@ -30,11 +32,16 @@ export default class App extends Component {
     console.log(this.state)
     return (
       <div className="App">
-      <WelcomePage 
-        startQuiz={this.startQuiz}
-        playerName={this.state.playerName}
-        setPlayer={this.setPlayer}
+      <Header 
+        correctQuestions={this.state.correctQuestions}
       />
+      <main className="main-content">
+        <WelcomePage 
+          startQuiz={this.startQuiz}
+          playerName={this.state.playerName}
+          setPlayer={this.setPlayer}
+        />
+      </main>
         
       </div>
     );
