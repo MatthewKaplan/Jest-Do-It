@@ -20,6 +20,7 @@ export const CardsContainer = (props) => {
       linkName={jest.linkName}
       link={jest.link}
       currentCard={currentCard}
+      checkAnswer={props.checkAnswer}
     />)
     
   return (

@@ -6,7 +6,7 @@ const WelcomePage = (props) => {
     <section className="welcomePage">
       <article className="backGround">
         <div className="welcomeContent">
-          <span className="welcomeHeader">Welcome to Jest Do It.</span>
+          <span className="welcomeHeader">Welcome to Jest Do It</span>
           <h2 className="subHeader">An online resource for learning the testing framework Jest along with the testing utility Enzyme.</h2>
           <img src="https://i.imgur.com/G1SZXAY.png" alt="Splash Page Image of Jest Icon" className="welcomeImg"/><br/>
           <form className="signInForm" onSubmit={props.startQuiz}>
@@ -16,7 +16,8 @@ const WelcomePage = (props) => {
               value={props.playerName}
               onChange={props.setPlayer}
               className='nameInput'
-              data-test='userNameInput' 
+              data-test='userNameInput'
+              maxlength="15" 
             />
             <input className="startGame" 
               type='submit'
