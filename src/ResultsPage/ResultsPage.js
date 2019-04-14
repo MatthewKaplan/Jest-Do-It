@@ -7,8 +7,12 @@ const ResultsPage = props => {
       <article className="backGround">
         <div className="welcomeContent">
           <span className="welcomeHeader">Good Job!</span>
-          <h2>Here are the results of your quiz</h2>
-          <p className="welcomeHeader">Correct Cards: <span>{props.correctQuestions.length}/31</span></p>
+          <p className="welcomeHeader">Correct Questions: <span>{props.correctQuestions.length}/31</span></p>
+          <input className="playAgain" 
+              type='submit'
+              onClick={props.restartGame}
+              value='Play Again!'
+          />
         </div>
       </article>
     </section>

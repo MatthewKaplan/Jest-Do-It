@@ -50,6 +50,16 @@ export default class App extends Component {
     })
   }
 
+  restartGame = () => {
+    this.setState({
+      activePlayer: false,
+      playerName: "",
+      questions: [],
+      currentQuestionIndex: 0,
+      correctQuestions: []
+    })
+  }
+
   render() {
 
     return (
@@ -63,7 +73,8 @@ export default class App extends Component {
       />}
       {this.state.currentQuestionIndex === 31 ? 
         <ResultsPage 
-        correctQuestions={this.state.correctQuestions} /> : null}
+        correctQuestions={this.state.correctQuestions} 
+        restartGame={this.restartGame} /> : null}
       {this.state.activePlayer && this.state.currentQuestionIndex < 31 ? 
       <CardsContainer 
         currentCard={this.state.questions[this.state.currentQuestionIndex]}
