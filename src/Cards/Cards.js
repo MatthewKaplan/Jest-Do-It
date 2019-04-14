@@ -1,18 +1,21 @@
 import React from 'react';
 import '../Styles/_Cards.scss';
+import { AnswerButtons } from '../AnswerButtons/AnswerButtons.js'
 
 export const Cards = (props) => {
-  console.log(props.potentialAnswers)
 
-  //const cardAnswers =
+  const cardAnswers = props.potentialAnswers.map(answer =>
+    <AnswerButtons key={answer}
+               answer={answer}
+    />)
   
   return (
-    <article className="Card">
-        <section className="Card-question">
+    <article className="questionCard">
+        <section className="cardQuestion">
           <h3>{props.question}</h3>
         </section>
-        <section className="Card-answers">
-          {props.potentialAnswers}
+        <section className="cardAnswers">
+          {cardAnswers}
         </section>
       </article>
   )

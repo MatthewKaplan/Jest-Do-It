@@ -1,8 +1,5 @@
 @import 'Mixins';
 
-
-$font-header: 'Barlow', sans-serif;
-
 .mainHeader {
   background-color: #6B3846;
   display: flex;
@@ -13,7 +10,6 @@ $font-header: 'Barlow', sans-serif;
   box-shadow: 0px 0px 5px 0px rgba(32, 32, 32, .5);
 
   h1 {
-    font-family: $font-header;
     color: rgba(255, 255, 255, 0.55);
     text-transform: uppercase;
     font-size: 1.5em;
@@ -24,7 +20,6 @@ $font-header: 'Barlow', sans-serif;
   }
 
   h4 {
-    font-family: $font-header;
     text-transform: uppercase;
     letter-spacing: .05em;
     color: #f7f7f7;
@@ -35,17 +30,5 @@ $font-header: 'Barlow', sans-serif;
   img {
     opacity: .55;
     height: 50px;
-  }
-
-  @media only screen and (max-width: 500px) {
-    padding: 0 1em;
-    
-    h1 {
-      font-size: 1em;
-    }
-
-    h4 {
-      font-size: .8em;
-    }
   }
 }
