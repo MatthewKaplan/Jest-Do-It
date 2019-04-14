@@ -3,6 +3,7 @@ import WelcomePage from '../WelcomePage/WelcomePage.js';
 import Header from '../Header/Header.js';
 import CardsContainer from '../CardsContainer/CardsContainer.js';
 import Footer from '../Footer/Footer.js';
+import ResultsPage from '../ResultsPage/ResultsPage.js';
 import data from '../data.js';
 import '../Styles/Main.scss';
 
@@ -41,7 +42,7 @@ export default class App extends Component {
     }
     currIndex++;
     this.changeQuestionIndex(currIndex);
-    }
+  }
   
   changeQuestionIndex = (currIndex) => {
     this.setState({
@@ -60,7 +61,10 @@ export default class App extends Component {
         playerName={this.state.playerName}
         setPlayer={this.setPlayer}
       />}
-      {this.state.activePlayer ? 
+      {this.state.currentQuestionIndex === 31 ? 
+        <ResultsPage 
+        correctQuestions={this.state.correctQuestions} /> : null}
+      {this.state.activePlayer && this.state.currentQuestionIndex < 31 ? 
       <CardsContainer 
         currentCard={this.state.questions[this.state.currentQuestionIndex]}
         checkAnswer={this.checkAnswer}
