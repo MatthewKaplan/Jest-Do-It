@@ -4,22 +4,28 @@ import data from '../data.js';
 import {Cards} from '../Cards/Cards.js';
 
 export const CardsContainer = (props) => {
+  const { currentCard } = props;
+  let displayCard;
 
+  data.jestQuestions.map( jest => 
+    displayCard =
+    <Cards 
+      key={currentCard.id}
+      id={jest.id}
+      question={jest.question}
+      potentialAnswers={jest.potentialAnswers}
+      correctAnswer={jest.correctAnswer}
+      onCorrectAnswer={jest.onCorrectAnswer}
+      onIncorrectAnswer={jest.onIncorrectAnswer}
+      linkName={jest.linkName}
+      link={jest.link}
+      currentCard={currentCard}
+    />)
+    
   return (
     <section className="CardsContainer">
-    {data.jestQuestions.map( jest => 
-      <Cards 
-        id={jest.id}
-        question={jest.question}
-        potentialAnswers={jest.potentialAnswers}
-        correctAnswer={jest.correctAnswer}
-        onCorrectAnswer={jest.onCorrectAnswer}
-        onIncorrectAnswer={jest.onIncorrectAnswer}
-        linkName={jest.linkName}
-        link={jest.link}
-      />)
-    }
-  </section>
+      {displayCard}
+    </section>
   );
 }
 

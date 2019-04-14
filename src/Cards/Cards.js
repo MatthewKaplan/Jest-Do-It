@@ -4,16 +4,19 @@ import { AnswerButtons } from '../AnswerButtons/AnswerButtons.js'
 
 export const Cards = (props) => {
 
-  const cardAnswers = props.potentialAnswers.map(answer =>
+  const answerArray = props.currentCard.potentialAnswers;
+  const cardQuestion = props.currentCard.question;
+
+  const cardAnswers = answerArray.map(answer =>
     <AnswerButtons 
-    key={answer}
-    answer={answer}
+      key={answer}
+      answer={answer}
     />)
   
   return (
     <article className="questionCard">
         <section className="cardQuestion">
-          <h3>{props.question}</h3>
+          <h3>{cardQuestion}</h3>
         </section>
         <section className="cardAnswers">
           {cardAnswers}

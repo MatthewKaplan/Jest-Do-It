@@ -6,7 +6,6 @@ const Header = (props) => {
   return (
     <header className="mainHeader">
       <h1>Jest Do It <img src="https://i.imgur.com/h5hvEDt.png" alt="Jest logo" className="jestLogo"/></h1>
-      <h4>Correct Questions: <span>{props.correctQuestions.length}/30</span></h4>
     </header>
   );
 };
