@@ -20,37 +20,30 @@ export default class App extends Component {
     e.preventDefault();
     this.setState({
       activePlayer: true
-    })
+    }, console.log(this.state.activePlayer))
   }
 
   setPlayer = (e) => {
     this.setState({
       playerName: e.target.value
-    })
+    }, console.log(this.state.playerName))
   }
 
   render() {
-    let displayedContent;
-
-    if(this.state.activePlayer === false) {
-      displayedContent = <WelcomePage
-                          startQuiz={this.startQuiz}
-                          playerName={this.state.playerName}
-                          setPlayer={this.setPlayer}
-                        /> 
-    } else {
-      displayedContent = <CardsContainer />
-
-    }
-
-
+    console.log(this.state)
     return (
       <div className="App">
       <Header 
         correctQuestions={this.state.correctQuestions}
       />
       <main className="main-content">
-        {displayedContent}
+        <WelcomePage 
+          startQuiz={this.startQuiz}
+          setPlayer={this.setPlayer}
+          playerName={this.state.playerName}
+        />
+
+        <CardsContainer />
       </main>
         
       </div>

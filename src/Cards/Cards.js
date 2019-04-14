@@ -5,8 +5,9 @@ import { AnswerButtons } from '../AnswerButtons/AnswerButtons.js'
 export const Cards = (props) => {
 
   const cardAnswers = props.potentialAnswers.map(answer =>
-    <AnswerButtons key={answer}
-               answer={answer}
+    <AnswerButtons 
+    key={answer}
+    answer={answer}
     />)
   
   return (
