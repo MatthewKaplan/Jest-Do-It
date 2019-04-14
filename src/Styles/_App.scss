@@ -1,6 +1,5 @@
 @import 'Mixins';
 
-
 .App {
   width: 100%;
   background-position: center;
@@ -19,24 +18,11 @@
     width: 100%;
     height: 100%;
     background: rgba(76,76,76,1);
-    //background: linear-gradient(135deg, #E17B9B 0%, rgba(246,246,246,0.76) 47%, rgba(237,237,237,0.83) 100%);
+    background: linear-gradient(135deg, #E17B9B 0%, rgba(246,246,246,0.76) 47%, rgba(237,237,237,0.83) 100%);
   }
 
   .main-content {
     z-index: 10;
     height: 88vh;
   }
-
-  @media only screen and (max-width: 600px) {
-    .main-content {
-      padding:2em;
-    }
-  }
-
-  @media only screen and (max-width: 500px) {
-    .main-content {
-      padding:5%;
-    }
-  }
-
 }
