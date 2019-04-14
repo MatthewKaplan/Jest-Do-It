@@ -8,6 +8,6 @@ const Footer = (props) => {
       <h4>Correct Questions: <span>{props.correctQuestions.length}/30</span></h4>
     </header>
   );
-};
+}
 
 export default Footer;
