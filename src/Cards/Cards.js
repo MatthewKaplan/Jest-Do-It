@@ -11,6 +11,7 @@ export const Cards = (props) => {
     <AnswerButtons 
       key={answer}
       answer={answer}
+      checkAnswer={props.checkAnswer}
     />)
   
   return (

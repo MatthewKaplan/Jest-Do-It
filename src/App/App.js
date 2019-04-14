@@ -32,7 +32,25 @@ export default class App extends Component {
     })
   }
 
+  checkAnswer = (clickedAnswer) => {
+    const { questions } = this.state;
+    const currentCard = questions[this.state.currentQuestionIndex];
+    let currIndex = this.state.currentQuestionIndex;
+    if(currentCard.correctAnswer === clickedAnswer) {
+      this.state.correctQuestions.push(currentCard);
+    }
+    currIndex++;
+    this.changeQuestionIndex(currIndex);
+    }
+  
+  changeQuestionIndex = (currIndex) => {
+    this.setState({
+      currentQuestionIndex: currIndex
+    })
+  }
+
   render() {
+
     return (
       <div className="App">
       <Header />
@@ -45,6 +63,7 @@ export default class App extends Component {
       {this.state.activePlayer ? 
       <CardsContainer 
         currentCard={this.state.questions[this.state.currentQuestionIndex]}
+        checkAnswer={this.checkAnswer}
       /> : null }
       {this.state.activePlayer ? 
       <Footer 
