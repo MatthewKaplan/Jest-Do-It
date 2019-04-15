@@ -17,7 +17,9 @@ export default class App extends Component {
       currentQuestionIndex: 0,
       correctQuestions: [],
       wrongQuestions: [],
-      secondRound: false
+      secondRound: false,
+      activeButtons: true,
+      answerResponse: ''
     }
   }
 
@@ -38,15 +40,28 @@ export default class App extends Component {
   checkAnswer = (clickedAnswer) => {
     const { questions } = this.state;
     const currentCard = questions[this.state.currentQuestionIndex];
-    let currIndex = this.state.currentQuestionIndex;
     if(currentCard.correctAnswer === clickedAnswer) {
       this.state.correctQuestions.push(currentCard);
+      this.setAnswerResponse(currentCard.onCorrectAnswer);
     } 
     if(this.state.secondRound === false && currentCard.correctAnswer !== clickedAnswer) {
       this.state.wrongQuestions.push(currentCard);
+      this.setAnswerResponse(currentCard.onIncorrectAnswer);
     }
+  }
+
+  nextCard = () => {
+    console.log('hello')
+    this.setAnswerResponse('');
+    let currIndex = this.state.currentQuestionIndex;
     currIndex++;
     this.changeQuestionIndex(currIndex);
+  }
+
+  setAnswerResponse = (currentCard) => {
+    this.setState({
+      answerResponse: currentCard
+    })
   }
   
   changeQuestionIndex = (currIndex) => {
@@ -98,6 +113,8 @@ export default class App extends Component {
       <CardsContainer 
         currentCard={this.state.questions[this.state.currentQuestionIndex]}
         checkAnswer={this.checkAnswer}
+        answerResponse={this.state.answerResponse}
+        nextCard={this.nextCard}
       /> : null }
       {this.state.activePlayer ? 
       <Footer 
