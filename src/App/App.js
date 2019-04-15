@@ -17,7 +17,9 @@ export default class App extends Component {
       currentQuestionIndex: 0,
       correctQuestions: [],
       wrongQuestions: [],
-      secondRound: false
+      secondRound: false,
+      activeButtons: false,
+      answerResponse: ''
     }
   }
 
@@ -38,15 +40,35 @@ export default class App extends Component {
   checkAnswer = (clickedAnswer) => {
     const { questions } = this.state;
     const currentCard = questions[this.state.currentQuestionIndex];
-    let currIndex = this.state.currentQuestionIndex;
     if(currentCard.correctAnswer === clickedAnswer) {
       this.state.correctQuestions.push(currentCard);
-    } 
-    if(this.state.secondRound === false && currentCard.correctAnswer !== clickedAnswer) {
+      this.setAnswerResponse(currentCard.onCorrectAnswer);
+    } else if(this.state.secondRound === false && currentCard.correctAnswer !== clickedAnswer) {
       this.state.wrongQuestions.push(currentCard);
+      this.setAnswerResponse(currentCard.onIncorrectAnswer);
+    } else {
+      this.setAnswerResponse(currentCard.onIncorrectAnswer);
     }
+  }
+
+  toggleButtons = (bool) => {
+    this.setState({
+      activeButtons: bool 
+    })
+  }
+
+  nextCard = () => {
+    this.setAnswerResponse('');
+    this.toggleButtons(false)
+    let currIndex = this.state.currentQuestionIndex;
     currIndex++;
     this.changeQuestionIndex(currIndex);
+  }
+
+  setAnswerResponse = (currentCard) => {
+    this.setState({
+      answerResponse: currentCard
+    }, this.toggleButtons(true))
   }
   
   changeQuestionIndex = (currIndex) => {
@@ -98,6 +120,9 @@ export default class App extends Component {
       <CardsContainer 
         currentCard={this.state.questions[this.state.currentQuestionIndex]}
         checkAnswer={this.checkAnswer}
+        answerResponse={this.state.answerResponse}
+        nextCard={this.nextCard}
+        activeButtons={this.state.activeButtons}
       /> : null }
       {this.state.activePlayer ? 
       <Footer 

@@ -21,6 +21,9 @@ export const CardsContainer = (props) => {
       link={jest.link}
       currentCard={currentCard}
       checkAnswer={props.checkAnswer}
+      answerResponse={props.answerResponse}
+      nextCard={props.nextCard}
+      activeButtons={props.activeButtons}
     />)
     
   return (
