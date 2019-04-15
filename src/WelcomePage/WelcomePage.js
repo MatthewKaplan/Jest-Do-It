@@ -8,7 +8,7 @@ const WelcomePage = (props) => {
         <div className="welcomeContent">
           <span className="welcomeHeader">Welcome to Jest Do It</span>
           <h2 className="subHeader">An online resource for learning the testing framework Jest along with the testing utility Enzyme.</h2>
-          <img src="https://i.imgur.com/G1SZXAY.png" alt="Splash Page Image of Jest Icon" className="welcomeImg"/><br/>
+          <img src="https://i.imgur.com/G1SZXAY.png" alt="Jest Icon" className="welcomeImg"/><br/>
           <form className="signInForm" onSubmit={props.startQuiz}>
             <input
               type='text'
