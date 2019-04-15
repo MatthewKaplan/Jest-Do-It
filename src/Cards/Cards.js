@@ -22,10 +22,11 @@ export class Cards extends Component {
       <article className="questionCard">
         {this.props.activeButtons ? null : <section className="cardQuestion"><h3>{currentCardQuestion}</h3></section>}
         <section className="cardAnswers">
-        {this.props.activeButtons ? null : cardAnswers}
+          {this.props.activeButtons ? null : cardAnswers}
         </section>
-         <section className="answerResponse"><h3>{this.props.answerResponse}</h3></section>
-        {this.props.activeButtons ? displayButton : null}
+        <section className="answerResponse"><h3>{this.props.answerResponse}</h3>
+          <a href={this.props.link} target="_blank" rel="noopener noreferrer">{this.props.linkName}</a></section>
+          {this.props.activeButtons ? displayButton : null}
       </article>
     )
   }

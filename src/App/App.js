@@ -19,7 +19,9 @@ export default class App extends Component {
       wrongQuestions: [],
       secondRound: false,
       activeButtons: false,
-      answerResponse: ''
+      answerResponse: '',
+      link: '',
+      linkName: ''
     }
   }
 
@@ -42,11 +44,14 @@ export default class App extends Component {
     const currentCard = questions[this.state.currentQuestionIndex];
     if(currentCard.correctAnswer === clickedAnswer) {
       this.state.correctQuestions.push(currentCard);
+      this.setCurrentCardLink(currentCard)
       this.setAnswerResponse(currentCard.onCorrectAnswer);
     } else if(this.state.secondRound === false && currentCard.correctAnswer !== clickedAnswer) {
       this.state.wrongQuestions.push(currentCard);
+      this.setCurrentCardLink(currentCard)
       this.setAnswerResponse(currentCard.onIncorrectAnswer);
     } else {
+      this.setCurrentCardLink(currentCard)
       this.setAnswerResponse(currentCard.onIncorrectAnswer);
     }
   }
@@ -59,6 +64,7 @@ export default class App extends Component {
 
   nextCard = () => {
     this.setAnswerResponse('');
+    this.setCurrentCardLink('');
     this.toggleButtons(false)
     let currIndex = this.state.currentQuestionIndex;
     currIndex++;
@@ -69,6 +75,13 @@ export default class App extends Component {
     this.setState({
       answerResponse: currentCard
     }, this.toggleButtons(true))
+  }
+
+  setCurrentCardLink = (currentCard) => {
+    this.setState({
+      link: currentCard.link,
+      linkName: currentCard.linkName
+    })
   }
   
   changeQuestionIndex = (currIndex) => {
@@ -121,6 +134,8 @@ export default class App extends Component {
         currentCard={this.state.questions[this.state.currentQuestionIndex]}
         checkAnswer={this.checkAnswer}
         answerResponse={this.state.answerResponse}
+        link={this.state.link}
+        linkName={this.state.linkName}
         nextCard={this.nextCard}
         activeButtons={this.state.activeButtons}
       /> : null }
