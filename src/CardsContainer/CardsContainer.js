@@ -24,6 +24,8 @@ export const CardsContainer = (props) => {
       answerResponse={props.answerResponse}
       nextCard={props.nextCard}
       activeButtons={props.activeButtons}
+      link={props.link}
+      linkName={props.linkName}
     />)
     
   return (
