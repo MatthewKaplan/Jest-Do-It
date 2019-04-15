@@ -18,7 +18,7 @@ export default class App extends Component {
       correctQuestions: [],
       wrongQuestions: [],
       secondRound: false,
-      activeButtons: true,
+      activeButtons: false,
       answerResponse: ''
     }
   }
@@ -43,16 +43,23 @@ export default class App extends Component {
     if(currentCard.correctAnswer === clickedAnswer) {
       this.state.correctQuestions.push(currentCard);
       this.setAnswerResponse(currentCard.onCorrectAnswer);
-    } 
-    if(this.state.secondRound === false && currentCard.correctAnswer !== clickedAnswer) {
+    } else if(this.state.secondRound === false && currentCard.correctAnswer !== clickedAnswer) {
       this.state.wrongQuestions.push(currentCard);
+      this.setAnswerResponse(currentCard.onIncorrectAnswer);
+    } else {
       this.setAnswerResponse(currentCard.onIncorrectAnswer);
     }
   }
 
+  toggleButtons = (bool) => {
+    this.setState({
+      activeButtons: bool 
+    })
+  }
+
   nextCard = () => {
-    console.log('hello')
     this.setAnswerResponse('');
+    this.toggleButtons(false)
     let currIndex = this.state.currentQuestionIndex;
     currIndex++;
     this.changeQuestionIndex(currIndex);
@@ -61,7 +68,7 @@ export default class App extends Component {
   setAnswerResponse = (currentCard) => {
     this.setState({
       answerResponse: currentCard
-    })
+    }, this.toggleButtons(true))
   }
   
   changeQuestionIndex = (currIndex) => {
@@ -115,6 +122,7 @@ export default class App extends Component {
         checkAnswer={this.checkAnswer}
         answerResponse={this.state.answerResponse}
         nextCard={this.nextCard}
+        activeButtons={this.state.activeButtons}
       /> : null }
       {this.state.activePlayer ? 
       <Footer 

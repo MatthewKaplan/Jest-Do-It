@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-
 import '../Styles/_AnswerButtons.scss';
 
 export class AnswerButtons extends Component {
@@ -17,6 +16,5 @@ export class AnswerButtons extends Component {
     )
   }
 }
-
 
 export default AnswerButtons;

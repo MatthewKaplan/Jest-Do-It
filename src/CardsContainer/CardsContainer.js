@@ -23,6 +23,7 @@ export const CardsContainer = (props) => {
       checkAnswer={props.checkAnswer}
       answerResponse={props.answerResponse}
       nextCard={props.nextCard}
+      activeButtons={props.activeButtons}
     />)
     
   return (
