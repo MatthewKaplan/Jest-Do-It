@@ -1,13 +1,12 @@
 import React from 'react';
 import '../Styles/_CardsContainer.scss';
-import data from '../data.js';
 import {Cards} from '../Cards/Cards.js';
 
 export const CardsContainer = (props) => {
   const { currentCard } = props;
   let displayCard;
 
-  data.jestQuestions.map( jest => 
+  props.questions.map( jest => 
     displayCard =
     <Cards 
       key={currentCard.id}

@@ -4,7 +4,6 @@ import Header from '../Header/Header.js';
 import CardsContainer from '../CardsContainer/CardsContainer.js';
 import Footer from '../Footer/Footer.js';
 import ResultsPage from '../ResultsPage/ResultsPage.js';
-import data from '../data.js';
 import '../Styles/Main.scss';
 
 export default class App extends Component {
@@ -29,7 +28,6 @@ export default class App extends Component {
     e.preventDefault();
     this.setState({
       activePlayer: true,
-      questions: data.jestQuestions
     })
   }
 
@@ -37,6 +35,17 @@ export default class App extends Component {
     this.setState({
       playerName: e.target.value
     })
+  }
+
+  componentDidMount(){
+    this.fetchData();
+  }
+
+  fetchData(){
+    fetch('https://fe-apps.herokuapp.com/api/v1/memoize/1901/matthewkaplan/jestquestions')
+      .then(response => response.json())
+      .then(questions => this.setState( {questions: questions.jestQuestions} ))
+      .catch(err => console.log(err))
   }
 
   checkAnswer = (clickedAnswer) => {
@@ -131,6 +140,7 @@ export default class App extends Component {
         /> : null}
       {this.state.activePlayer && this.state.currentQuestionIndex < this.state.questions.length ?
       <CardsContainer 
+        questions={this.state.questions}
         currentCard={this.state.questions[this.state.currentQuestionIndex]}
         checkAnswer={this.checkAnswer}
         answerResponse={this.state.answerResponse}
