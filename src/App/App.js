@@ -141,13 +141,15 @@ export default class App extends Component {
   }
 
   restartGame = () => {
+    this.fetchData();
     this.setState({
       activePlayer: false,
       playerName: "",
       questions: [],
       currentQuestionIndex: 0,
       correctQuestions: [],
-      secondRound: false
+      secondRound: false,
+      wrongQuestions: []
     })
   }
 
@@ -155,7 +157,10 @@ export default class App extends Component {
     console.log(this.state)
     return (
       <div className="App">
-      <Header />
+      <Header 
+      restartGame={this.restartGame}
+      activePlayer={this.state.activePlayer} 
+      />
       {this.state.activePlayer ? null :
       <WelcomePage
         startQuiz={this.startQuiz}
