@@ -38,7 +38,9 @@ export default class App extends Component {
   }
 
   componentDidMount(){
-    this.fetchData();
+    if(!localStorage.getItem('activePlayer')){
+      this.fetchData();
+    }
   }
 
   fetchData(){
@@ -46,6 +48,36 @@ export default class App extends Component {
       .then(response => response.json())
       .then(questions => this.setState( {questions: questions.jestQuestions} ))
       .catch(err => console.log(err))
+  }
+
+  componentWillUpdate(nextProps, nextState) {
+    localStorage.setItem('activePlayer', JSON.stringify(nextState.activePlayer));
+    localStorage.setItem('playerName', JSON.stringify(nextState.playerName));
+    localStorage.setItem('questions', JSON.stringify(nextState.questions));
+    localStorage.setItem('currentQuestionIndex', JSON.stringify(nextState.currentQuestionIndex));
+    localStorage.setItem('wrongQuestions', JSON.stringify(nextState.wrongQuestions));
+    localStorage.setItem('correctQuestions', JSON.stringify(nextState.correctQuestions));
+  }
+
+  componentWillMount() {
+    localStorage.getItem('activePlayer') && this.setState({
+      activePlayer: JSON.parse(localStorage.getItem('activePlayer'))
+    })
+    localStorage.getItem('playerName') && this.setState({
+      playerName: JSON.parse(localStorage.getItem('playerName'))
+    })
+    localStorage.getItem('questions') && this.setState({
+      questions: JSON.parse(localStorage.getItem('questions'))
+    })
+    localStorage.getItem('currentQuestionIndex') && this.setState({
+      currentQuestionIndex: JSON.parse(localStorage.getItem('currentQuestionIndex'))
+    })
+    localStorage.getItem('wrongQuestions') && this.setState({
+      wrongQuestions: JSON.parse(localStorage.getItem('wrongQuestions'))
+    })
+    localStorage.getItem('correctQuestions') && this.setState({
+      correctQuestions: JSON.parse(localStorage.getItem('correctQuestions'))
+    })
   }
 
   checkAnswer = (clickedAnswer) => {
