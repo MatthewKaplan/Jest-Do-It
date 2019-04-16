@@ -13,14 +13,15 @@ export default class App extends Component {
       activePlayer: false,
       playerName: "",
       questions: [],
-      currentQuestionIndex: 0,
+      currentQuestionIndex: 30,
       correctQuestions: [],
       wrongQuestions: [],
       secondRound: false,
       activeButtons: false,
       answerResponse: '',
       link: '',
-      linkName: ''
+      linkName: '',
+      isLoading: false
     }
   }
 
@@ -44,9 +45,10 @@ export default class App extends Component {
   }
 
   fetchData(){
+    this.setState({isLoading: true})
     fetch('https://fe-apps.herokuapp.com/api/v1/memoize/1901/matthewkaplan/jestquestions')
       .then(response => response.json())
-      .then(questions => this.setState( {questions: questions.jestQuestions} ))
+      .then(questions => this.setState( {questions: questions.jestQuestions, isLoading: false} ))
       .catch(err => console.log(err))
   }
 
@@ -153,6 +155,25 @@ export default class App extends Component {
     })
   }
 
+  playAgain = () => {
+    this.fetchData();
+    this.setState({
+      questions: [],
+      currentQuestionIndex: 0,
+      correctQuestions: [],
+      secondRound: false,
+      wrongQuestions: []
+    })
+  }
+
+  isLoading = () => {
+  let displayloading;
+  if(this.state.isLoading === true) {
+    displayloading = <h4 className="isLoading">IS LOADING!!!!!</h4>
+  }
+    return displayloading;
+  }
+
   render() {
     console.log(this.state)
     return (
@@ -170,10 +191,12 @@ export default class App extends Component {
       {this.state.activePlayer && this.state.currentQuestionIndex === this.state.questions.length ? 
         <ResultsPage 
         correctQuestions={this.state.correctQuestions} 
-        restartGame={this.restartGame} 
+        playAgain={this.playAgain} 
         switchSecondRound={this.switchSecondRound}
         secondRound={this.state.secondRound}
         questions={this.state.questions}
+        isLoadingFunction={this.isLoading}
+        isLoading={this.state.isLoading}
         /> : null}
       {this.state.activePlayer && this.state.currentQuestionIndex < this.state.questions.length ?
       <CardsContainer 

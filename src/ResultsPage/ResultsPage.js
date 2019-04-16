@@ -8,10 +8,10 @@ const ResultsPage = props => {
       <article className="backGround">
         <div className="welcomeContent">
           <span className="welcomeHeader">{props.secondRound === false ? props.correctQuestions.length >= 23 ? 'Good Job!' : 'You can do better!' : 'Thats Better!'}</span>
-          <p className="welcomeHeader"><span>{`${Math.round(props.correctQuestions.length * 100 / props.questions.length)}%`}</span></p>
+          <p className="welcomeHeader"><span>{props.isLoading ? props.isLoadingFunction : `${Math.round(props.correctQuestions.length * 100 / props.questions.length)}%`}</span></p>
           <input className="playAgain" 
               type='submit'
-              onClick={props.restartGame}
+              onClick={props.playAgain}
               value='Play Again!'
           /><br/><br/><br/>
           {displayBtn}
