@@ -5,6 +5,7 @@ exports[`AnswerButtons should match snapshot 1`] = `
   className="answerButtons"
 >
   <button
+    data-test="answer-btn"
     onClick={[Function]}
   />
 </div>

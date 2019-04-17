@@ -5,22 +5,29 @@ import { shallow } from 'enzyme';
 
 const mockLeaderBoardArr = [{ name: "Kevin", score: 2 }, { name: "Matthew", score: 1 }]
 
+describe("Leaderboard", () => {
 
-describe('Leaderboard', () => {
-  it('should match snapshot', () => {
-    const wrapper = shallow(
+  let wrapper;
+
+  beforeEach(() => {
+    wrapper = shallow(
       <Leaderboard
         leaderboardArr={mockLeaderBoardArr}
-     />);
+     />)
+  });
+
+  it('should match snapshot', () => {
     expect(wrapper).toMatchSnapshot();
   });
 
   it("should have a proper default state", () => {
-    const wrapper = shallow(
-      <Leaderboard
-        leaderboardArr={mockLeaderBoardArr}
-     />);
-    const initialSearchQueryState = wrapper.state('list');
-    expect(initialSearchQueryState).toEqual(mockLeaderBoardArr)
+    const initialListArray = wrapper.state('list');
+    expect(initialListArray).toEqual(mockLeaderBoardArr)
+  });
+
+  it("should set the state of list when invoked", () => {
+    expect(wrapper.state().list).toEqual(mockLeaderBoardArr);
+    wrapper.instance().componentDidMount();
+    expect(wrapper.state().list).toEqual(mockLeaderBoardArr);
   });
 });

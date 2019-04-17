@@ -38,13 +38,47 @@ linkName: "Enzyme Docs",
 link: "https://airbnb.io/enzyme/"
 }
 
-describe('ResultsPage', () => {
-  it('should match snapshot', () => {
-    const wrapper = shallow(
+const mock_playAgain = jest.fn()
+const mock_switchSecondRound = jest.fn()
+
+describe("ResultsPage", () => {
+
+  let wrapper;
+
+  beforeEach(() => {
+    wrapper = shallow(
       <ResultsPage
         correctQuestions={mockCorrectQuestions}
         questions={mockQuestions} 
-     />);
+        playAgain={mock_playAgain}
+        switchSecondRound={mock_switchSecondRound}
+     />)
+  });
+
+  it('should match snapshot', () => {
     expect(wrapper).toMatchSnapshot();
   });
+
+  it("should invoke the handleChangeCard method onClick", () => {
+    wrapper.find("[data-test='play-again-btn']").simulate('click', { preventDefault: () => {} });
+    expect(mock_playAgain).toBeCalled();
+  });
+
+  //  it("should invoke the switchSecondRound method onClick", () => {
+  //   wrapper.find("[data-test='wrong-answers-btn']").simulate('click', { preventDefault: () => {} });
+  //   expect(mock_switchSecondRound).toBeCalled();
+  // });
 });
+
+
+
+
+
+
+
+
+
+
+
+
+

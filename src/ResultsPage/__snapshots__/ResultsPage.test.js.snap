@@ -24,6 +24,8 @@ exports[`ResultsPage should match snapshot 1`] = `
       </p>
       <input
         className="playAgain"
+        data-test="play-again-btn"
+        onClick={[MockFunction]}
         type="submit"
         value="Play Again!"
       />

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Cards } from './Cards';
+import  Cards  from './Cards';
 import { shallow } from 'enzyme';
 
 const mockCurrentCard = 
@@ -20,12 +20,37 @@ linkName: "Enzyme mount",
 link: "https://airbnb.io/enzyme/#full-dom-rendering"
 }
 
-describe('Cards', () => {
-  it('should match snapshot', () => {
-    const wrapper = shallow(
+
+const mock_nextCard = jest.fn()
+
+describe("Cards", () => {
+
+  let wrapper;
+
+  beforeEach(() => {
+    wrapper = shallow(
       <Cards 
         currentCard={mockCurrentCard}
-      />);
+        nextCard={mock_nextCard}
+      />
+    );
+  });
+
+  it("should match the snapshot with all data passed in", () => {
     expect(wrapper).toMatchSnapshot();
   });
+
+  // it("should show the next card when clicked", () => {
+  //   wrapper.find("[data-test='next-card-btn']").simulate('click', { preventDefault: () => {} });
+  //   expect(mock_nextCard).toBeCalled();
+  // });
 });
+
+
+
+
+
+
+
+
+

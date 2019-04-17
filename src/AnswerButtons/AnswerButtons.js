@@ -11,7 +11,7 @@ export class AnswerButtons extends Component {
     const cardAnswer = this.props.answer;
     return (
       <div className="answerButtons">
-        <button onClick={this.handleChangeCard}>{cardAnswer}</button>
+        <button data-test="answer-btn" onClick={this.handleChangeCard}>{cardAnswer}</button>
       </div>
     )
   }
