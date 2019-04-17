@@ -6,8 +6,6 @@ export class Cards extends Component {
 
   render(){
 
-    const displayButton = <button className="nextCard" onClick={this.props.nextCard}>Next Question</button>
-
     const currentCardAnswers = this.props.currentCard.potentialAnswers;
     const currentCardQuestion = this.props.currentCard.question;
 
@@ -25,8 +23,8 @@ export class Cards extends Component {
           {this.props.activeButtons ? null : cardAnswers}
         </section>
         <section className="answerResponse"><h3>{this.props.answerResponse}</h3>
-          <a href={this.props.link} target="_blank" rel="noopener noreferrer">Read more: {this.props.linkName}</a></section>
-          {this.props.activeButtons ? displayButton : null}
+          <a href={this.props.link} target="_blank" rel="noopener noreferrer">Learn more: {this.props.linkName}</a></section>
+          {this.props.activeButtons ? <button className="nextCard" onClick={this.props.nextCard}>Next Question</button> : null}
       </article>
     )
   }

@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AnswerButtons should match snapshot 1`] = `
+<div
+  className="answerButtons"
+>
+  <button
+    onClick={[Function]}
+  />
+</div>
+`;

@@ -1,0 +1,42 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CardsContainer should match snapshot 1`] = `
+<section
+  className="CardsContainer"
+>
+  <Cards
+    correctAnswer="mount"
+    currentCard={
+      Object {
+        "correctAnswer": "Snapshot Testing",
+        "id": 4,
+        "link": "https://jestjs.io/docs/en/snapshot-testing",
+        "linkName": "Snapshot Testing",
+        "onCorrectAnswer": "Thats correct! Snapshot testing is a great tool that Jest offers its users. Although it can't really be done with the basic principles of TDD.",
+        "onIncorrectAnswer": "Thats incorrect. The corret answer is: Snapshot Testing.",
+        "potentialAnswers": Array [
+          "Snapshot Testing",
+          "Screenshot Testing",
+          "Snapscreen Testing",
+          "Screenshot Testing",
+        ],
+        "question": "What is it called when Jest takes the component that is being tested, renders it, and displays it to the user of how it should appear on the DOM?",
+        "save": "false",
+      }
+    }
+    id={3}
+    key="4"
+    onCorrectAnswer="Thats correct! For full DOM rendering you'll want to use mount. If you just want to render a shallow copy you'd use shallow."
+    onIncorrectAnswer="Thats incorrect. The correct answer is: mount."
+    potentialAnswers={
+      Array [
+        "mount",
+        "shallow",
+        "sinon",
+        "expect",
+      ]
+    }
+    question="When you want full DOM Rendering what must you import from the Enzyme library at the top of your test file?"
+  />
+</section>
+`;

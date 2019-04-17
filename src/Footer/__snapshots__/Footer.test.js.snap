@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Footer should match snapshot 1`] = `
+<header
+  className="mainHeader"
+>
+  <h1>
+    Welcome, 
+  </h1>
+  <h4>
+    Correct Questions: 
+    <span>
+      1
+      /
+      2
+    </span>
+  </h4>
+</header>
+`;

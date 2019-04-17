@@ -3,14 +3,6 @@ import '../Styles/_Header.scss';
 
 export class Header extends Component {
 
-hideLeaderBoard = () => {
-  this.props.leaderBoardScreen(false);
-}
-
-displayLeaderBoard = () => {
-  this.props.leaderBoardScreen(true);
-}
-
   render() {
     return (
       <header className="mainHeader">
@@ -19,11 +11,13 @@ displayLeaderBoard = () => {
           <input className="playAgain" 
                 type='submit'
                 onClick={this.props.restartGame}
+                data-test="new-game-btn"
                 value='New Game'
             /> : null}
             <input className="playAgain" 
                 type='submit'
-                onClick={this.props.leaderboard ? this.hideLeaderBoard : this.displayLeaderBoard}
+                onClick={this.props.leaderBoardScreen}
+                data-test="leaderboard-btn"
                 value={this.props.leaderboard ? 'Back to game' : 'Leaderboard'}
             /> 
       </header>

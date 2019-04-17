@@ -1,7 +1,7 @@
-import React from 'react';
+import React, {Component} from 'react';
 import '../Styles/_Leaderboard.scss';
 
-class Leaderboard extends React.Component {
+export class Leaderboard extends Component {
   constructor() {
     super();
     this.state = {
@@ -20,36 +20,25 @@ class Leaderboard extends React.Component {
     let userlist = this.state.list.map((user, i) => <User name={  user.name } rank={ i + 1 } answeredCorrectly={ user.score } />);
     return (
       <div className="container">
-        <LeaderboardHeader />
-        <ColumnHeader />
+        <div className="leadheader">
+          <h2>Leaderboard</h2>
+        </div>
+        <div className="row colheader">
+        <div className="col-xs-1">
+          <h4>#</h4>
+        </div>
+        <div className="col-xs-5">
+          <h4>Name</h4>
+        </div>
+        <div className="col-xs-3 recent">
+          <h4>Answered Correctly</h4>
+        </div>
+      </div>
         { userlist }
       </div>
     )
   }
 }
-
-const LeaderboardHeader = () => {
-  return (
-    <div className="leadheader">
-        <h2>Leaderboard</h2>
-    </div>
-  )
-}
-
-const ColumnHeader = () => (
-  <div className="row colheader">
-      <div className="col-xs-1">
-        <h4>#</h4>
-      </div>
-      <div className="col-xs-5">
-        <h4>Name</h4>
-      </div>
-      <div className="col-xs-3 recent">
-        <h4>Answered Correctly</h4>
-      </div>
-    </div>
-);
-
 
 const User = ({ rank, answeredCorrectly, name }) => {
   return (
