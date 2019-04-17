@@ -1,0 +1,23 @@
+@import url('https://fonts.googleapis.com/css?family=Spectral');
+
+$primary-font: 'Spectral', serif;
+
+
+// Variables:
+$primary-purple: #6B3846;
+$secondary-light: #BEA6AC;
+$background-gradient: #E17B9B;
+$input-font-color: #D4BBB4;
+$white: #F7F7F7;
+$whiterow: rgba(254, 254, 254, .9);
+$greyrow: rgba(240, 240, 240, .9);
+
+
+// MixIns: 
+
+
+@mixin flex {
+    // write the css here
+    display: -webkit-flex;
+    display: flex;
+}
