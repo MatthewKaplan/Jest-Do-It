@@ -41,18 +41,13 @@ export default class App extends Component {
     })
   }
 
-
   updateLeaderboard = () => {
     let leaderboardNewArr = this.state.leaderboardArr;
-
     leaderboardNewArr.forEach(leader => {
       if(leader.name === this.state.playerName) {
         leader.score = this.state.correctQuestions.length
       }
     })
-
-    // console.log(leaderboardNewArr);
-
     this.setState({
       leaderboardArr: leaderboardNewArr
     })
@@ -62,11 +57,7 @@ export default class App extends Component {
     let leaderboardNewArr = this.state.leaderboardArr;
     let correctAnswers = this.state.correctQuestions;
     let score = correctAnswers.length;
-
-    // console.log(this.state.correctQuestions)
-
     leaderboardNewArr.push({name: this.state.playerName, score: score})
-
     this.setState({
       leaderboardArr: leaderboardNewArr
     })
@@ -174,7 +165,7 @@ export default class App extends Component {
 
   toggleLeaderBoardScreen = (bool) => {
     this.setState({
-      leaderboard: true
+      leaderboard: bool
     })
   }
 
@@ -221,7 +212,7 @@ export default class App extends Component {
   }
 
   render() {
-    // console.log(this.state.leaderboardArr)
+    console.log(this.state.leaderboard)
     const { isLoading, linkName, link, answerResponse, activeButtons,  secondRound, correctQuestions, currentQuestionIndex, questions, playerName, activePlayer, leaderboard, leaderboardArr} = this.state;
     let toBeDisplayed;
     if(activePlayer === false && leaderboard === false) {
@@ -239,8 +230,6 @@ export default class App extends Component {
                                        activeButtons={activeButtons} /> 
     } else if(leaderboard === true) {
       toBeDisplayed = <Leaderboard leaderBoardScreen={this.toggleLeaderBoardScreen}
-                                   playerName={playerName} 
-                                   correctQuestions={correctQuestions}
                                    leaderboardArr={leaderboardArr} />
     } else {
       toBeDisplayed = <ResultsPage correctQuestions={correctQuestions} 
@@ -257,7 +246,9 @@ export default class App extends Component {
         <Header 
         restartGame={this.restartGame}
         activePlayer={activePlayer} 
-        leaderBoardScreen={this.toggleLeaderBoardScreen} />
+        leaderBoardScreen={this.toggleLeaderBoardScreen}
+        leaderboard={this.state.leaderboard} 
+        />
           {toBeDisplayed}
         {this.state.activePlayer ? 
         <Footer 
