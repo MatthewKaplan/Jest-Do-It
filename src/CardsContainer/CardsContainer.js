@@ -1,6 +1,6 @@
 import React from 'react';
 import '../Styles/_CardsContainer.scss';
-import {Cards} from '../Cards/Cards.js';
+import { Cards } from '../Cards/Cards.js';
 
 export const CardsContainer = (props) => {
   const { currentCard } = props;
@@ -21,8 +21,6 @@ export const CardsContainer = (props) => {
       answerResponse={props.answerResponse}
       nextCard={props.nextCard}
       activeButtons={props.activeButtons}
-      link={props.link}
-      linkName={props.linkName}
     />)
     
   return (

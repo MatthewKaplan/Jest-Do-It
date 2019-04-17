@@ -1,14 +1,6 @@
 @import 'Mixins';
 @import url('https://fonts.googleapis.com/css?family=Montserrat');
-//font variables
 $main-font: 'Montserrat', sans-serif;
-
-// Color variables
-$bgcolor: #FFC9D7;
-$maincolor: rgba(0, 168, 232, 0.79);
-$whiterow: rgba(254, 254, 254, .9);
-$greyrow: rgba(240, 240, 240, .9);
-$white: rgba(254, 254, 254, 1);
 
 body {
   background: url('https://i.kinja-img.com/gawker-media/image/upload/m6ztwkawvypgrnn9k5o3.jpg') no-repeat center center fixed;
@@ -29,7 +21,7 @@ body {
 .leadheader {
   width: 100%;
   height: 70px;
-  background: #853E52;
+  background: $primary-purple;
   text-align: center;
   border-radius: 5px 5px 0 0;
   & h2 {
@@ -86,7 +78,7 @@ body {
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    border: 2px solid #853E52;
+    border: 2px solid $primary-purple;
     margin-right: 10px;
   }
 

@@ -35,12 +35,6 @@ exports[`Cards should match the snapshot with all data passed in 1`] = `
     className="answerResponse"
   >
     <h3 />
-    <a
-      rel="noopener noreferrer"
-      target="_blank"
-    >
-      Learn more: 
-    </a>
   </section>
 </article>
 `;

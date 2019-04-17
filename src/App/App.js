@@ -20,8 +20,6 @@ export default class App extends Component {
       secondRound: false,
       activeButtons: false,
       answerResponse: '',
-      link: '',
-      linkName: '',
       leaderboard: false,
       leaderboardArr: []
     }
@@ -123,7 +121,6 @@ export default class App extends Component {
     } else {
       this.setAnswerResponse(currentCard.onIncorrectAnswer);
     }
-      this.setCurrentCardLink(currentCard)
   }
 
   toggleAnswerButtons = () => {
@@ -134,7 +131,6 @@ export default class App extends Component {
 
   nextCard = () => {
     this.setAnswerResponse('');
-    this.setCurrentCardLink('');
     this.toggleAnswerButtons()
     let currIndex = this.state.currentQuestionIndex;
     currIndex++;
@@ -147,13 +143,6 @@ export default class App extends Component {
     }, this.toggleAnswerButtons())
   }
 
-  setCurrentCardLink = (currentCard) => {
-    this.setState({
-      link: currentCard.link,
-      linkName: currentCard.linkName
-    })
-  }
-  
   changeQuestionIndex = (currIndex) => {
     this.setState({
       currentQuestionIndex: currIndex
@@ -201,8 +190,7 @@ export default class App extends Component {
   }
 
   render() {
-    // console.log(this.state.leaderboard)
-    const { isLoading, linkName, link, answerResponse, activeButtons,  secondRound, correctQuestions, currentQuestionIndex, questions, playerName, activePlayer, leaderboard, leaderboardArr} = this.state;
+    const { answerResponse, activeButtons,  secondRound, correctQuestions, currentQuestionIndex, questions, playerName, activePlayer, leaderboard, leaderboardArr} = this.state;
     let toBeDisplayed;
     if(activePlayer === false && leaderboard === false) {
       toBeDisplayed = <WelcomePage startQuiz={this.startQuiz}
@@ -213,30 +201,24 @@ export default class App extends Component {
                                        currentCard={questions[currentQuestionIndex]}
                                        checkAnswer={this.checkAnswer}
                                        answerResponse={answerResponse}
-                                       link={link}
-                                       linkName={linkName}
                                        nextCard={this.nextCard}
                                        activeButtons={activeButtons} /> 
     } else if(leaderboard === true) {
-      toBeDisplayed = <Leaderboard leaderBoardScreen={this.toggleLeaderBoardScreen}
-                                   leaderboardArr={leaderboardArr} />
+      toBeDisplayed = <Leaderboard leaderboardArr={leaderboardArr} />
     } else {
       toBeDisplayed = <ResultsPage correctQuestions={correctQuestions} 
                                     playAgain={this.playAgain} 
                                     switchSecondRound={this.switchSecondRound}
                                     secondRound={secondRound}
-                                    questions={questions}
-                                    isLoadingFunction={this.isLoading}
-                                    isLoading={isLoading} />
+                                    questions={questions} />
     }
-
     return (
       <div className="App">
         <Header 
         restartGame={this.restartGame}
         activePlayer={activePlayer} 
         leaderBoardScreen={this.toggleLeaderBoardScreen}
-        leaderboard={this.state.leaderboard} 
+        leaderboard={leaderboard} 
         />
           {toBeDisplayed}
         {this.state.activePlayer ? 

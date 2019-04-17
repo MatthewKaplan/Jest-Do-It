@@ -32,8 +32,6 @@ describe("App", () => {
       secondRound: false,
       activeButtons: false,
       answerResponse: '',
-      link: '',
-      linkName: '',
       leaderboard: false,
       leaderboardArr: []
     });
@@ -68,17 +66,6 @@ describe("App", () => {
       expect(wrapper.state().leaderboard).toEqual(false);
       wrapper.instance().toggleLeaderBoardScreen();
       expect(wrapper.state().leaderboard).toEqual(true);
-    });
-  });
-
-  describe("setCurrentCardLink", () => {
-    it("should set the state of link and linkName to that of the current card passed in", () => {
-      expect(wrapper.state().linkName).toEqual('');
-      expect(wrapper.state().link).toEqual('');
-      wrapper.instance().setCurrentCardLink(mockQuestion);
-      expect(wrapper.state().linkName).toEqual('Jest Github');
-      wrapper.instance().setCurrentCardLink(mockQuestion);
-      expect(wrapper.state().link).toEqual('https://github.com/facebook/jest');
     });
   });
 
