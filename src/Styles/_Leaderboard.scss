@@ -1,0 +1,110 @@
+@import 'Mixins';
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+//font variables
+$main-font: 'Montserrat', sans-serif;
+
+// Color variables
+$bgcolor: #FFC9D7;
+$maincolor: rgba(0, 168, 232, 0.79);
+$whiterow: rgba(254, 254, 254, .9);
+$greyrow: rgba(240, 240, 240, .9);
+$white: rgba(254, 254, 254, 1);
+
+body {
+  background: url('https://i.kinja-img.com/gawker-media/image/upload/m6ztwkawvypgrnn9k5o3.jpg') no-repeat center center fixed;
+  background-size: cover;
+  font-family: $main-font;
+}
+
+.container {
+  width: 70%;
+  position: relative;
+  display: block;
+  margin: 0 auto;
+  max-height: 1000px;
+  overflow: scroll;
+  bottom: 18em;
+}
+
+.leadheader {
+  width: 100%;
+  height: 70px;
+  background: #853E52;
+  text-align: center;
+  border-radius: 5px 5px 0 0;
+  & h2 {
+    margin: 0;
+    color: $white;
+    padding-top: 20px;
+  }
+}
+
+.colheader {
+  background: $whiterow;
+  width: 100%;
+  margin-left: 0;
+  text-align: center;
+  border-bottom: 1px solid rgba(0,0,0,.2);
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  & h4 {
+    font-size: 15px;
+  }
+  
+  & .alltime {
+    cursor: pointer;
+    user-select: none;
+
+  & .recent {
+    cursor: pointer;
+    user-select: none;
+    }
+  }
+}
+    
+.users {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  align-items: center;
+  background: $white;
+  width: 100%;
+  height: 45%;
+
+  text-align: center;
+
+  & .name {
+    text-align: center;
+
+    & a {
+      padding-top: 15px;
+      vertical-align: middle;
+    }
+  }
+
+  & img {
+    float: left;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 2px solid #853E52;
+    margin-right: 10px;
+  }
+
+  & .rank {
+    padding-left: 6px;
+  }
+
+  &:nth-of-type(odd) {
+    background: $whiterow;
+  }
+
+  &:nth-of-type(even) {
+    background: $greyrow;
+  }
+  
+  &:last-child {
+    border-radius: 0 0 5px 5px;
+  }
+}
+  
+ 

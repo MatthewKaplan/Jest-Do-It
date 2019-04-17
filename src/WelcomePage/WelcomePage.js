@@ -17,7 +17,7 @@ const WelcomePage = (props) => {
               onChange={props.setPlayer}
               className='nameInput'
               data-test='userNameInput'
-              maxlength="15" 
+              maxLength="15" 
             />
             <input className="startGame" 
               type='submit'
