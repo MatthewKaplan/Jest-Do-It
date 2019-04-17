@@ -12,11 +12,15 @@ exports[`Header should match snapshot 1`] = `
       src="https://i.imgur.com/h5hvEDt.png"
     />
   </h1>
-  <input
-    className="playAgain"
-    data-test="leaderboard-btn"
-    type="submit"
-    value="Leaderboard"
-  />
+  <section
+    className="btnContainer"
+  >
+    <input
+      className="playAgain leaderboardBtn"
+      data-test="leaderboard-btn"
+      type="submit"
+      value="Leaderboard"
+    />
+  </section>
 </header>
 `;

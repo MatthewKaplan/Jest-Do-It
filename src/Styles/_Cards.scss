@@ -1,7 +1,7 @@
 @import 'Mixins';
 
 .questionCard {
-  max-width: 700px;
+  max-width: 800px;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -20,8 +20,6 @@
       color: $primary-purple;
       padding: .2em 0;
       position: relative;
-      -webkit-text-stroke-width: .5px;
-      -webkit-text-stroke-color: $secondary-light;
       font-size: 1.5em;
       font-weight: 800;
     }

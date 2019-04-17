@@ -221,7 +221,7 @@ export default class App extends Component {
         leaderboard={leaderboard} 
         />
           {toBeDisplayed}
-        {this.state.activePlayer ? 
+        { activePlayer ? 
         <Footer 
           playerName={playerName}
           questions={questions}
