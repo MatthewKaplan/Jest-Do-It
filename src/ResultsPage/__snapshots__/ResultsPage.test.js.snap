@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ResultsPage should match snapshot 1`] = `
+<section
+  className="welcomePage"
+>
+  <article
+    className="backGround"
+  >
+    <div
+      className="welcomeContent"
+    >
+      <span
+        className="welcomeHeader"
+      >
+        Thats Better!
+      </span>
+      <p
+        className="welcomeHeader"
+      >
+        <span>
+          NaN%
+        </span>
+      </p>
+      <input
+        className="playAgain"
+        type="submit"
+        value="Play Again!"
+      />
+      <br />
+      <br />
+      <br />
+    </div>
+  </article>
+</section>
+`;

@@ -12,9 +12,9 @@ export default class App extends Component {
     super(props);
     this.state = {
       activePlayer: false,
-      playerName: "",
+      playerName: '',
       questions: [],
-      currentQuestionIndex: 28,
+      currentQuestionIndex: 0,
       correctQuestions: [],
       wrongQuestions: [],
       secondRound: false,
@@ -22,7 +22,6 @@ export default class App extends Component {
       answerResponse: '',
       link: '',
       linkName: '',
-      isLoading: false,
       leaderboard: false,
       leaderboardArr: []
     }
@@ -41,6 +40,16 @@ export default class App extends Component {
     })
   }
 
+  setLeaderboardArr = () => {
+    let leaderboardNewArr = this.state.leaderboardArr;
+    let correctAnswers = this.state.correctQuestions;
+    let score = correctAnswers.length;
+    leaderboardNewArr.push({name: this.state.playerName, score: score})
+    this.setState({
+      leaderboardArr: leaderboardNewArr
+    })
+  }
+  
   updateLeaderboard = () => {
     let leaderboardNewArr = this.state.leaderboardArr;
     leaderboardNewArr.forEach(leader => {
@@ -48,16 +57,6 @@ export default class App extends Component {
         leader.score = this.state.correctQuestions.length
       }
     })
-    this.setState({
-      leaderboardArr: leaderboardNewArr
-    })
-  }
-
-  setLeaderboardArr = () => {
-    let leaderboardNewArr = this.state.leaderboardArr;
-    let correctAnswers = this.state.correctQuestions;
-    let score = correctAnswers.length;
-    leaderboardNewArr.push({name: this.state.playerName, score: score})
     this.setState({
       leaderboardArr: leaderboardNewArr
     })
@@ -73,7 +72,7 @@ export default class App extends Component {
     this.setState({isLoading: true})
     fetch('https://fe-apps.herokuapp.com/api/v1/memoize/1901/matthewkaplan/jestquestions')
       .then(response => response.json())
-      .then(questions => this.setState( {questions: questions.jestQuestions, isLoading: false} ))
+      .then(questions => this.setState( {questions: questions.jestQuestions} ))
       .catch(err => console.log(err))
   }
 
@@ -116,29 +115,27 @@ export default class App extends Component {
     const currentCard = questions[this.state.currentQuestionIndex];
     if(currentCard.correctAnswer === clickedAnswer) {
       this.state.correctQuestions.push(currentCard);
-      this.setCurrentCardLink(currentCard)
       this.setAnswerResponse(currentCard.onCorrectAnswer);
       this.updateLeaderboard();
     } else if(this.state.secondRound === false && currentCard.correctAnswer !== clickedAnswer) {
       this.state.wrongQuestions.push(currentCard);
-      this.setCurrentCardLink(currentCard)
       this.setAnswerResponse(currentCard.onIncorrectAnswer);
     } else {
-      this.setCurrentCardLink(currentCard)
       this.setAnswerResponse(currentCard.onIncorrectAnswer);
     }
+      this.setCurrentCardLink(currentCard)
   }
 
-  toggleButtons = (bool) => {
+  toggleAnswerButtons = () => {
     this.setState({
-      activeButtons: bool 
+      activeButtons: !this.state.activeButtons 
     })
   }
 
   nextCard = () => {
     this.setAnswerResponse('');
     this.setCurrentCardLink('');
-    this.toggleButtons(false)
+    this.toggleAnswerButtons()
     let currIndex = this.state.currentQuestionIndex;
     currIndex++;
     this.changeQuestionIndex(currIndex);
@@ -147,7 +144,7 @@ export default class App extends Component {
   setAnswerResponse = (currentCard) => {
     this.setState({
       answerResponse: currentCard
-    }, this.toggleButtons(true))
+    }, this.toggleAnswerButtons())
   }
 
   setCurrentCardLink = (currentCard) => {
@@ -163,9 +160,9 @@ export default class App extends Component {
     })
   }
 
-  toggleLeaderBoardScreen = (bool) => {
+  toggleLeaderBoardScreen = () => {
     this.setState({
-      leaderboard: bool
+      leaderboard: !this.state.leaderboard
     })
   }
 
@@ -203,16 +200,8 @@ export default class App extends Component {
     })
   }
 
-  isLoading = () => {
-  let displayloading;
-  if(this.state.isLoading === true) {
-    displayloading = <h4 className="isLoading">Starting a new game!</h4>
-  }
-    return displayloading;
-  }
-
   render() {
-    console.log(this.state.leaderboard)
+    // console.log(this.state.leaderboard)
     const { isLoading, linkName, link, answerResponse, activeButtons,  secondRound, correctQuestions, currentQuestionIndex, questions, playerName, activePlayer, leaderboard, leaderboardArr} = this.state;
     let toBeDisplayed;
     if(activePlayer === false && leaderboard === false) {

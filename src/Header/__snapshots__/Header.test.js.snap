@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header should match snapshot 1`] = `
+<header
+  className="mainHeader"
+>
+  <h1>
+    Jest Do It 
+    <img
+      alt="Jest logo"
+      className="jestLogo"
+      src="https://i.imgur.com/h5hvEDt.png"
+    />
+  </h1>
+  <input
+    className="playAgain"
+    type="submit"
+    value="Leaderboard"
+  />
+</header>
+`;

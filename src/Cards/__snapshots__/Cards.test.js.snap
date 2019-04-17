@@ -1,0 +1,46 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Cards should match snapshot 1`] = `
+<article
+  className="questionCard"
+>
+  <section
+    className="cardQuestion"
+  >
+    <h3>
+      When you want full DOM Rendering what must you import from the Enzyme library at the top of your test file?
+    </h3>
+  </section>
+  <section
+    className="cardAnswers"
+  >
+    <AnswerButtons
+      answer="mount"
+      key="mount"
+    />
+    <AnswerButtons
+      answer="shallow"
+      key="shallow"
+    />
+    <AnswerButtons
+      answer="sinon"
+      key="sinon"
+    />
+    <AnswerButtons
+      answer="expect"
+      key="expect"
+    />
+  </section>
+  <section
+    className="answerResponse"
+  >
+    <h3 />
+    <a
+      rel="noopener noreferrer"
+      target="_blank"
+    >
+      Learn more: 
+    </a>
+  </section>
+</article>
+`;

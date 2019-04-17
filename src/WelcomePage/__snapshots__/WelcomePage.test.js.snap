@@ -1,0 +1,48 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`WelcomePage should match snapshot 1`] = `
+<section
+  className="welcomePage"
+>
+  <article
+    className="backGround"
+  >
+    <div
+      className="welcomeContent"
+    >
+      <span
+        className="welcomeHeader"
+      >
+        Welcome to Jest Do It
+      </span>
+      <h2
+        className="subHeader"
+      >
+        An online resource for learning the testing framework Jest along with the testing utility Enzyme.
+      </h2>
+      <img
+        alt="Jest Icon"
+        className="welcomeImg"
+        src="https://i.imgur.com/G1SZXAY.png"
+      />
+      <br />
+      <form
+        className="signInForm"
+      >
+        <input
+          className="nameInput"
+          data-test="userNameInput"
+          maxLength="15"
+          placeholder="Enter your name to continue"
+          type="text"
+        />
+        <input
+          className="startGame"
+          type="submit"
+          value="Start Game"
+        />
+      </form>
+    </div>
+  </article>
+</section>
+`;

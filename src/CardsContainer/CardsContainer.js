@@ -16,8 +16,6 @@ export const CardsContainer = (props) => {
       correctAnswer={jest.correctAnswer}
       onCorrectAnswer={jest.onCorrectAnswer}
       onIncorrectAnswer={jest.onIncorrectAnswer}
-      linkName={jest.linkName}
-      link={jest.link}
       currentCard={currentCard}
       checkAnswer={props.checkAnswer}
       answerResponse={props.answerResponse}
