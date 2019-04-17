@@ -25,7 +25,7 @@ export class Leaderboard extends Component {
         </div>
         <div className="row colheader">
         <div className="col-xs-1">
-          <h4>#</h4>
+          <h4>Current Position</h4>
         </div>
         <div className="col-xs-5">
           <h4>Name</h4>
