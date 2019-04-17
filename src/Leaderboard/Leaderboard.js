@@ -17,7 +17,7 @@ export class Leaderboard extends Component {
   }
 
   render() {
-    let userlist = this.state.list.map((user, i) => <User name={  user.name } rank={ i + 1 } answeredCorrectly={ user.score } />);
+    let userlist = this.state.list.map((user, i) => <User key={user.toString()} name={  user.name } rank={ i + 1 } answeredCorrectly={ user.score } />);
     return (
       <div className="container">
         <div className="leadheader">

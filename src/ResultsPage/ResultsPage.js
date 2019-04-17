@@ -2,7 +2,7 @@ import React from "react";
 import '../Styles/_WelcomePage.scss';
 
 const ResultsPage = props => {
-  let displayBtn = props.secondRound === false ? <input className="playAgain" type='submit' onClick={props.switchSecondRound} value='Practice the ones you got wrong' /> : null;
+  let displayBtn = props.secondRound === false ? <input className="playAgain" type='submit' data-test='wrong-answers-btn' onClick={props.switchSecondRound} value='Practice the ones you got wrong' /> : null;
   return (
     <section className="welcomePage">
       <article className="backGround">
@@ -12,6 +12,7 @@ const ResultsPage = props => {
           <input className="playAgain" 
               type='submit'
               onClick={props.playAgain}
+              data-test='play-again-btn'
               value='Play Again!'
           /><br/><br/><br/>
           {displayBtn}

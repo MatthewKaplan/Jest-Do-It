@@ -24,7 +24,7 @@ export class Cards extends Component {
         </section>
         <section className="answerResponse"><h3>{this.props.answerResponse}</h3>
           <a href={this.props.link} target="_blank" rel="noopener noreferrer">Learn more: {this.props.linkName}</a></section>
-          {this.props.activeButtons ? <button className="nextCard" onClick={this.props.nextCard}>Next Question</button> : null}
+          {this.props.activeButtons ? <button className="nextCard" data-test='next-card-btn' onClick={this.props.nextCard}>Next Question</button> : null}
       </article>
     )
   }
