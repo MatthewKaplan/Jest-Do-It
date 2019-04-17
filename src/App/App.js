@@ -3,6 +3,7 @@ import WelcomePage from '../WelcomePage/WelcomePage.js';
 import Header from '../Header/Header.js';
 import CardsContainer from '../CardsContainer/CardsContainer.js';
 import Footer from '../Footer/Footer.js';
+import Leaderboard from '../Leaderboard/Leaderboard.js';
 import ResultsPage from '../ResultsPage/ResultsPage.js';
 import '../Styles/Main.scss';
 
@@ -13,7 +14,7 @@ export default class App extends Component {
       activePlayer: false,
       playerName: "",
       questions: [],
-      currentQuestionIndex: 30,
+      currentQuestionIndex: 28,
       correctQuestions: [],
       wrongQuestions: [],
       secondRound: false,
@@ -21,7 +22,9 @@ export default class App extends Component {
       answerResponse: '',
       link: '',
       linkName: '',
-      isLoading: false
+      isLoading: false,
+      leaderboard: false,
+      leaderboardArr: []
     }
   }
 
@@ -29,12 +32,43 @@ export default class App extends Component {
     e.preventDefault();
     this.setState({
       activePlayer: true,
-    })
+    }, this.setLeaderboardArr())
   }
 
   setPlayer = (e) => {
     this.setState({
-      playerName: e.target.value
+      playerName: e.target.value,
+    })
+  }
+
+
+  updateLeaderboard = () => {
+    let leaderboardNewArr = this.state.leaderboardArr;
+
+    leaderboardNewArr.forEach(leader => {
+      if(leader.name === this.state.playerName) {
+        leader.score = this.state.correctQuestions.length
+      }
+    })
+
+    // console.log(leaderboardNewArr);
+
+    this.setState({
+      leaderboardArr: leaderboardNewArr
+    })
+  }
+
+  setLeaderboardArr = () => {
+    let leaderboardNewArr = this.state.leaderboardArr;
+    let correctAnswers = this.state.correctQuestions;
+    let score = correctAnswers.length;
+
+    // console.log(this.state.correctQuestions)
+
+    leaderboardNewArr.push({name: this.state.playerName, score: score})
+
+    this.setState({
+      leaderboardArr: leaderboardNewArr
     })
   }
 
@@ -59,6 +93,7 @@ export default class App extends Component {
     localStorage.setItem('currentQuestionIndex', JSON.stringify(nextState.currentQuestionIndex));
     localStorage.setItem('wrongQuestions', JSON.stringify(nextState.wrongQuestions));
     localStorage.setItem('correctQuestions', JSON.stringify(nextState.correctQuestions));
+    localStorage.setItem('leaderboardArr', JSON.stringify(nextState.leaderboardArr));
   }
 
   componentWillMount() {
@@ -80,6 +115,9 @@ export default class App extends Component {
     localStorage.getItem('correctQuestions') && this.setState({
       correctQuestions: JSON.parse(localStorage.getItem('correctQuestions'))
     })
+    localStorage.getItem('leaderboardArr') && this.setState({
+      leaderboardArr: JSON.parse(localStorage.getItem('leaderboardArr'))
+    })
   }
 
   checkAnswer = (clickedAnswer) => {
@@ -89,6 +127,7 @@ export default class App extends Component {
       this.state.correctQuestions.push(currentCard);
       this.setCurrentCardLink(currentCard)
       this.setAnswerResponse(currentCard.onCorrectAnswer);
+      this.updateLeaderboard();
     } else if(this.state.secondRound === false && currentCard.correctAnswer !== clickedAnswer) {
       this.state.wrongQuestions.push(currentCard);
       this.setCurrentCardLink(currentCard)
@@ -133,6 +172,12 @@ export default class App extends Component {
     })
   }
 
+  toggleLeaderBoardScreen = (bool) => {
+    this.setState({
+      leaderboard: true
+    })
+  }
+
   switchSecondRound = () => {
     this.setState({
       secondRound: true,
@@ -151,7 +196,8 @@ export default class App extends Component {
       currentQuestionIndex: 0,
       correctQuestions: [],
       secondRound: false,
-      wrongQuestions: []
+      wrongQuestions: [],
+      leaderboard: false
     })
   }
 
@@ -169,52 +215,55 @@ export default class App extends Component {
   isLoading = () => {
   let displayloading;
   if(this.state.isLoading === true) {
-    displayloading = <h4 className="isLoading">IS LOADING!!!!!</h4>
+    displayloading = <h4 className="isLoading">Starting a new game!</h4>
   }
     return displayloading;
   }
 
   render() {
-    console.log(this.state)
+    // console.log(this.state.leaderboardArr)
+    const { isLoading, linkName, link, answerResponse, activeButtons,  secondRound, correctQuestions, currentQuestionIndex, questions, playerName, activePlayer, leaderboard, leaderboardArr} = this.state;
+    let toBeDisplayed;
+    if(activePlayer === false && leaderboard === false) {
+      toBeDisplayed = <WelcomePage startQuiz={this.startQuiz}
+                                    playerName={playerName}
+                                    setPlayer={this.setPlayer} />
+    } else if(activePlayer === true && currentQuestionIndex < questions.length && leaderboard === false) {
+      toBeDisplayed = <CardsContainer questions={questions}
+                                       currentCard={questions[currentQuestionIndex]}
+                                       checkAnswer={this.checkAnswer}
+                                       answerResponse={answerResponse}
+                                       link={link}
+                                       linkName={linkName}
+                                       nextCard={this.nextCard}
+                                       activeButtons={activeButtons} /> 
+    } else if(leaderboard === true) {
+      toBeDisplayed = <Leaderboard leaderBoardScreen={this.toggleLeaderBoardScreen}
+                                   playerName={playerName} 
+                                   correctQuestions={correctQuestions}
+                                   leaderboardArr={leaderboardArr} />
+    } else {
+      toBeDisplayed = <ResultsPage correctQuestions={correctQuestions} 
+                                    playAgain={this.playAgain} 
+                                    switchSecondRound={this.switchSecondRound}
+                                    secondRound={secondRound}
+                                    questions={questions}
+                                    isLoadingFunction={this.isLoading}
+                                    isLoading={isLoading} />
+    }
+
     return (
       <div className="App">
-      <Header 
-      restartGame={this.restartGame}
-      activePlayer={this.state.activePlayer} 
-      />
-      {this.state.activePlayer ? null :
-      <WelcomePage
-        startQuiz={this.startQuiz}
-        playerName={this.state.playerName}
-        setPlayer={this.setPlayer}
-      />}
-      {this.state.activePlayer && this.state.currentQuestionIndex === this.state.questions.length ? 
-        <ResultsPage 
-        correctQuestions={this.state.correctQuestions} 
-        playAgain={this.playAgain} 
-        switchSecondRound={this.switchSecondRound}
-        secondRound={this.state.secondRound}
-        questions={this.state.questions}
-        isLoadingFunction={this.isLoading}
-        isLoading={this.state.isLoading}
-        /> : null}
-      {this.state.activePlayer && this.state.currentQuestionIndex < this.state.questions.length ?
-      <CardsContainer 
-        questions={this.state.questions}
-        currentCard={this.state.questions[this.state.currentQuestionIndex]}
-        checkAnswer={this.checkAnswer}
-        answerResponse={this.state.answerResponse}
-        link={this.state.link}
-        linkName={this.state.linkName}
-        nextCard={this.nextCard}
-        activeButtons={this.state.activeButtons}
-      /> : null }
-      {this.state.activePlayer ? 
-      <Footer 
-        playerName={this.state.playerName}
-        questions={this.state.questions}
-        correctQuestions={this.state.correctQuestions}
-      /> : null }
+        <Header 
+        restartGame={this.restartGame}
+        activePlayer={activePlayer} 
+        leaderBoardScreen={this.toggleLeaderBoardScreen} />
+          {toBeDisplayed}
+        {this.state.activePlayer ? 
+        <Footer 
+          playerName={playerName}
+          questions={questions}
+          correctQuestions={correctQuestions} /> : null }
       </div>
     );
   }

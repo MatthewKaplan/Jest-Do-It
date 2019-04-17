@@ -1,3 +1,3 @@
 import React from 'react';
-import { Controls } from './Controls';
+import { Leaderboard } from './Leaderboard';
 import { shallow } from 'enzyme';
