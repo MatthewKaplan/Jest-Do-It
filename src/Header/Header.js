@@ -3,10 +3,13 @@ import '../Styles/_Header.scss';
 
 export class Header extends Component {
 
-leaderBoardScreenHandle = () => {
-  this.props.leaderBoardScreen(true)
+hideLeaderBoard = () => {
+  this.props.leaderBoardScreen(false);
 }
 
+displayLeaderBoard = () => {
+  this.props.leaderBoardScreen(true);
+}
 
   render() {
     return (
@@ -20,9 +23,9 @@ leaderBoardScreenHandle = () => {
             /> : null}
             <input className="playAgain" 
                 type='submit'
-                onClick={this.leaderBoardScreenHandle}
-                value='Leaderboard'
-            />
+                onClick={this.props.leaderboard ? this.hideLeaderBoard : this.displayLeaderBoard}
+                value={this.props.leaderboard ? 'Back to game' : 'Leaderboard'}
+            /> 
       </header>
     );
   }
