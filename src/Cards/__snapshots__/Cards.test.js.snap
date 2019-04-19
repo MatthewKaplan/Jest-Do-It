@@ -8,27 +8,28 @@ exports[`Cards should match the snapshot with all data passed in 1`] = `
     className="cardQuestion"
   >
     <h3>
-      When you want full DOM Rendering what must you import from the Enzyme library at the top of your test file?
+      Jest is a JavaScript testing tool originally created by the developers at:
     </h3>
   </section>
   <section
     className="cardAnswers"
+    onClick={[Function]}
   >
     <AnswerButtons
-      answer="mount"
-      key="mount"
+      answer="Facebook"
+      key="Facebook"
     />
     <AnswerButtons
-      answer="shallow"
-      key="shallow"
+      answer="Twitter"
+      key="Twitter"
     />
     <AnswerButtons
-      answer="sinon"
-      key="sinon"
+      answer="Airbnb"
+      key="Airbnb"
     />
     <AnswerButtons
-      answer="expect"
-      key="expect"
+      answer="Microsoft"
+      key="Microsoft"
     />
   </section>
   <section

@@ -39,14 +39,8 @@ exports[`Leaderboard should match snapshot 1`] = `
   <User
     answeredCorrectly={2}
     key="[object Object]"
-    name="Kevin"
-    rank={1}
-  />
-  <User
-    answeredCorrectly={1}
-    key="[object Object]"
     name="Matthew"
-    rank={2}
+    rank={1}
   />
 </div>
 `;

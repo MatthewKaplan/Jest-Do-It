@@ -1,9 +1,16 @@
 import React from 'react';
 import Leaderboard from './Leaderboard';
 import { shallow } from 'enzyme';
+import MockData from '../mockData';
 
+const mockQuestion = MockData.mockQuestion;
+const mockQuestions = MockData.mockQuestions;
+const mockCorrectQuestions = MockData.mockCorrectQuestions;
+const newMockCorrectQuestions = MockData.newMockCorrectQuestions;
 
-const mockLeaderBoardArr = [{ name: "Kevin", score: 2 }, { name: "Matthew", score: 1 }]
+const mockPlayerName = "Matthew";
+
+const mockLeaderBoardArr = [{"name": "Matthew", "score": 2}]
 
 describe("Leaderboard", () => {
 
@@ -12,7 +19,8 @@ describe("Leaderboard", () => {
   beforeEach(() => {
     wrapper = shallow(
       <Leaderboard
-        leaderboardArr={mockLeaderBoardArr}
+        correctQuestions={mockCorrectQuestions}
+        playerName={mockPlayerName}
      />)
   });
 
@@ -21,13 +29,23 @@ describe("Leaderboard", () => {
   });
 
   it("should have a proper default state", () => {
-    const initialListArray = wrapper.state('list');
+    const initialListArray = wrapper.state('leaderboardArr');
     expect(initialListArray).toEqual(mockLeaderBoardArr)
   });
 
-  it("should set the state of list when invoked", () => {
-    expect(wrapper.state().list).toEqual(mockLeaderBoardArr);
-    wrapper.instance().componentDidMount();
-    expect(wrapper.state().list).toEqual(mockLeaderBoardArr);
+  describe("setLeaderboardArr", () => {
+    it("should set the state of leaderboardArr", () => {
+      expect(wrapper.state().leaderboardArr).toEqual([{"name": "Matthew", "score": 2}]);
+      wrapper.setState({ correctQuestions: mockCorrectQuestions });
+      wrapper.instance().setLeaderboardArr();
+      expect(wrapper.state().leaderboardArr).toEqual([{"name": "Matthew", "score": 2}]);
+    });
   });
+  
+  it("should set the state of leaderboardArr when invoked", () => {
+    expect(wrapper.state().leaderboardArr).toEqual(mockLeaderBoardArr);
+    wrapper.instance().setLeaderboardArr();
+    expect(wrapper.state().leaderboardArr).toEqual(mockLeaderBoardArr);
+  });
+
 });
