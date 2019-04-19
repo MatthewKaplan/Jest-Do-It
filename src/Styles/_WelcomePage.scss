@@ -17,7 +17,7 @@
       z-index: 10;
       position: relative;
 
-      .welcomeImg{
+      .welcomeImg {
         max-width: 500px;
       }
 
@@ -26,8 +26,6 @@
         font-weight: 800;
         font-size: 75px;
         color: $primary-purple;
-        -webkit-text-stroke-width: .25px;
-        -webkit-text-stroke-color: $secondary-light;
       }
       
       .subHeader {
@@ -56,7 +54,7 @@
 
       .playAgain {
         height: 75px;
-        width: 295px;
+        width: 305px;
         border: none;
         border-radius: 1em;
         background-color: $primary-purple;

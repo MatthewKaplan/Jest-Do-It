@@ -13,7 +13,7 @@ exports[`ResultsPage should match snapshot 1`] = `
       <span
         className="welcomeHeader"
       >
-        Thats Better!
+        You can do better!
       </span>
       <p
         className="welcomeHeader"
@@ -29,9 +29,6 @@ exports[`ResultsPage should match snapshot 1`] = `
         type="submit"
         value="Play Again!"
       />
-      <br />
-      <br />
-      <br />
     </div>
   </article>
 </section>
