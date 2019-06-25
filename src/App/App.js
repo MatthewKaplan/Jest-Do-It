@@ -21,7 +21,7 @@ export default class App extends Component {
       activeButtons: false,
       answerResponse: '',
       leaderboard: false,
-      leaderboardArr: []
+      leaderboardArr: [] 
     }
   }
 
