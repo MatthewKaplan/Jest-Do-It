@@ -5,38 +5,41 @@ exports[`CardsContainer should match snapshot 1`] = `
   className="CardsContainer"
 >
   <Cards
-    correctAnswer="mount"
+    answerResponse=""
+    checkAnswer={[Function]}
+    correctAnswer=".toThrow()"
     currentCard={
       Object {
-        "correctAnswer": "Snapshot Testing",
-        "id": 4,
-        "link": "https://jestjs.io/docs/en/snapshot-testing",
-        "linkName": "Snapshot Testing",
-        "onCorrectAnswer": "Thats correct! Snapshot testing is a great tool that Jest offers its users. Although it can't really be done with the basic principles of TDD.",
-        "onIncorrectAnswer": "Thats incorrect. The corret answer is: Snapshot Testing.",
+        "correctAnswer": "CORRECT ANSWER",
+        "id": 23,
+        "link": "https://jestjs.io/docs/en/tutorial-jquery#docsNav",
+        "linkName": "Testing Events",
+        "onCorrectAnswer": "Thats correct!",
+        "onIncorrectAnswer": "Thats incorrect. The correct answer is: .simulate().",
         "potentialAnswers": Array [
-          "Snapshot Testing",
-          "Screenshot Testing",
-          "Snapscreen Testing",
-          "Screenshot Testing",
+          ".simulate()",
+          ".onClick()",
+          ".click()",
+          "All of the above",
         ],
-        "question": "What is it called when Jest takes the component that is being tested, renders it, and displays it to the user of how it should appear on the DOM?",
+        "question": "How would one test a button or an input?",
         "save": "false",
       }
     }
-    id={3}
-    key="4"
-    onCorrectAnswer="Thats correct! For full DOM rendering you'll want to use mount. If you just want to render a shallow copy you'd use shallow."
-    onIncorrectAnswer="Thats incorrect. The correct answer is: mount."
+    id={30}
+    key="30"
+    nextCard={[Function]}
+    onCorrectAnswer="Thats correct!"
+    onIncorrectAnswer="Thats incorrect. The correct answer is: .toThrow()."
     potentialAnswers={
       Array [
-        "mount",
-        "shallow",
-        "sinon",
-        "expect",
+        ".toThrow()",
+        ".toThrowError()",
+        ".throwsError()",
+        ".expectError()",
       ]
     }
-    question="When you want full DOM Rendering what must you import from the Enzyme library at the top of your test file?"
+    question="If you want to test that a particular function throws an error when it's called, use:"
   />
 </section>
 `;

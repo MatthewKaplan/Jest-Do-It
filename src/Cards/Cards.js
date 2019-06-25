@@ -1,32 +1,38 @@
 import React, { Component } from 'react';
 import '../Styles/_Cards.scss';
-import { AnswerButtons } from '../AnswerButtons/AnswerButtons.js';
+import  AnswerButtons  from '../AnswerButtons/AnswerButtons.js';
 
-export class Cards extends Component {
+export default class Cards extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      activeButtons: true
+    }
+  }
+
+  toggleAnswerButtons = () => {
+    this.setState({
+      activeButtons: !this.state.activeButtons 
+    })
+  }
 
   render(){
     const currentCardAnswers = this.props.currentCard.potentialAnswers;
     const currentCardQuestion = this.props.currentCard.question;
 
     const cardAnswers = currentCardAnswers.map(answer =>
-      <AnswerButtons 
-        key={answer}
-        answer={answer}
-        checkAnswer={this.props.checkAnswer}
-      />)
+      <AnswerButtons key={answer} answer={answer} checkAnswer={this.props.checkAnswer} />)
     
     return (
       <article className="questionCard">
-        {this.props.activeButtons ? null : <section className="cardQuestion"><h3>{currentCardQuestion}</h3></section>}
-        <section className="cardAnswers">
-          {this.props.activeButtons ? null : cardAnswers}
+        {this.state.activeButtons ? <section className="cardQuestion"><h3>{currentCardQuestion}</h3></section> : null}
+        <section className="cardAnswers" onClick={this.toggleAnswerButtons}>
+          {this.state.activeButtons ? cardAnswers : null}
         </section>
         <section className="answerResponse"><h3>{this.props.answerResponse}</h3>
         </section>
-          {this.props.activeButtons ? <button className="nextCard" data-test='next-card-btn' onClick={this.props.nextCard}>Next Question</button> : null}
+          {this.state.activeButtons ? null : <button className="nextCard" data-test='next-card-btn'  onClick={()=>{this.props.nextCard(); this.toggleAnswerButtons()}}>Next Question</button>}
       </article>
     )
   }
 }
-
-export default Cards;

@@ -28,7 +28,6 @@ exports[`WelcomePage should match snapshot 1`] = `
       <br />
       <form
         className="signInForm"
-        data-test="start-quiz-btn"
       >
         <input
           className="nameInput"
@@ -40,6 +39,7 @@ exports[`WelcomePage should match snapshot 1`] = `
         <input
           className="startGame"
           data-test="btn-start-quiz"
+          disabled={true}
           type="submit"
           value="Start Game"
         />

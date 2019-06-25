@@ -1,25 +1,9 @@
 import React from 'react';
 import  Cards  from './Cards';
 import { shallow } from 'enzyme';
+import MockData from '../mockData';
 
-const mockCurrentCard = 
-{
-id: 3,
-question: "When you want full DOM Rendering what must you import from the Enzyme library at the top of your test file?",
-potentialAnswers: [
-  "mount",
-  "shallow",
-  "sinon",
-  "expect"
-],
-correctAnswer: "mount",
-save: "false",
-onCorrectAnswer: "Thats correct! For full DOM rendering you'll want to use mount. If you just want to render a shallow copy you'd use shallow.",
-onIncorrectAnswer: "Thats incorrect. The correct answer is: mount.",
-linkName: "Enzyme mount",
-link: "https://airbnb.io/enzyme/#full-dom-rendering"
-}
-
+const mockCurrentCard = MockData.mockQuestion;
 
 const mock_nextCard = jest.fn()
 
@@ -40,10 +24,27 @@ describe("Cards", () => {
     expect(wrapper).toMatchSnapshot();
   });
 
-  // it("should show the next card when clicked", () => {
-  //   wrapper.find("[data-test='next-card-btn']").simulate('click', { preventDefault: () => {} });
-  //   expect(mock_nextCard).toBeCalled();
-  // });
+  it("should have a proper default state", () => {
+    expect(wrapper.state()).toEqual({
+      activeButtons: true
+    });
+  });
+
+  describe("toggleAnswerButtons Method", () => {
+    it("should set the state of activeButtons to either true or false when invoked", () => {
+      expect(wrapper.state().activeButtons).toEqual(true);
+      wrapper.instance().toggleAnswerButtons();
+      expect(wrapper.state().activeButtons).toEqual(false);
+    });
+  });
+
+  it("should show the next card when clicked", () => {
+    expect(wrapper.state().activeButtons).toEqual(true);
+    wrapper.instance().toggleAnswerButtons();
+    expect(wrapper.state().activeButtons).toEqual(false);
+    wrapper.find("[data-test='next-card-btn']").simulate('click', { preventDefault: () => {} });
+    expect(mock_nextCard).toBeCalled();
+  });
 });
 
 

@@ -27,20 +27,4 @@ describe("WelcomePage", () => {
     wrapper.find("[data-test='user-name-input']").simulate('change', { preventDefault: () => {} });
     expect(mock_setPlayer).toBeCalled();
   });
-
-   it("should invoke the switchSecondRound method onClick", () => {
-    wrapper.find("[data-test='start-quiz-btn']").simulate('submit', { preventDefault: () => {} });
-    expect(mock_startQuiz).toBeCalled();
-  });
-
-   it("should invoke the switchSecondRound method onClick", () => {
-    wrapper.find("[data-test='btn-start-quiz']").simulate('submit', { preventDefault: () => {} });
-    expect(mock_startQuiz).toBeCalled();
-  });
-
-
-
-
-
-
 });

@@ -25,7 +25,7 @@ potentialAnswers: [
   ".click()",
   "All of the above"
 ],
-correctAnswer: ".simulate()",
+correctAnswer: "CORRECT ANSWER",
 save: "false",
 onCorrectAnswer: "Thats correct!",
 onIncorrectAnswer: "Thats incorrect. The correct answer is: .simulate().",

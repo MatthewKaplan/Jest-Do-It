@@ -5,19 +5,29 @@ export class Leaderboard extends Component {
   constructor() {
     super();
     this.state = {
-      list: [] 
+      leaderboardArr: []
     }
   }
 
-  componentDidMount() {
-    let sortedLoaderboardArr = this.props.leaderboardArr.map(player => player).sort((a,b) => b.score - a.score);
+  setLeaderboardArr = () => {
     this.setState({
-      list: sortedLoaderboardArr
+      leaderboardArr: [{name: this.props.playerName, score: this.props.correctQuestions.length}]
     })
   }
 
+  componentDidMount() {
+    localStorage.getItem('leaderboardArr') && this.setState({
+      leaderboardArr: JSON.parse(localStorage.getItem('leaderboardArr'))
+    })
+    this.setLeaderboardArr()
+  }
+
+  componentWillUpdate(nextProps, nextState) {
+    localStorage.setItem('leaderboardArr', JSON.stringify(nextState.leaderboardArr));
+  }
+
   render() {
-    let userlist = this.state.list.map((user, i) => <User key={user.toString()} name={  user.name } rank={ i + 1 } answeredCorrectly={ user.score } />);
+    let userlist = this.state.leaderboardArr.map((user, i) => <User key={user.toString()} name={ user.name } rank={ i + 1 } answeredCorrectly={ user.score } />);
     return (
       <div className="container">
         <div className="leadheader">
@@ -25,7 +35,7 @@ export class Leaderboard extends Component {
         </div>
         <div className="row colheader">
         <div className="col-xs-1">
-          <h4>#</h4>
+          <h4>Current Position</h4>
         </div>
         <div className="col-xs-5">
           <h4>Name</h4>
