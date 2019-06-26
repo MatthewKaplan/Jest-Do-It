@@ -7,10 +7,14 @@ Jest Do It is a flash card application that tests the user on their knowledge of
 [https://jest-do-it.netlify.com](https://jest-do-it.netlify.com)
 
 ## Preview:
-![Start_Page](https://i.imgur.com/c9lFr3A.jpg)
-![Continue_Page](https://i.imgur.com/BQZa8sS.jpg)
-![Flash_Cards](https://i.imgur.com/VWyRA0D.jpg)
-![Final_Screen](https://i.imgur.com/XYklVpH.jpg)
+
+| Home Page:  | Question: |
+| ------------- | ------------- |
+| <img src="https://i.imgur.com/c9lFr3A.jpg" alt="project test coverage" width="500" height="500" > | <img src="https://i.imgur.com/BQZa8sS.jpg" alt="project test coverage" width="500" height="500" > |
+
+| Correct Answer:  | Leaderboard: |
+| ------------- | ------------- |
+| <img src="https://i.imgur.com/VWyRA0D.jpg" alt="project test coverage" width="500" height="500" > | <img src="https://i.imgur.com/XYklVpH.jpg" alt="project test coverage" width="500" height="500" > |
 
 
 ## Getting Started:
@@ -34,3 +38,25 @@ launch in your browser:
 ```
 $ npm start
 ```
+
+## Project Tools:
+
+- Javascript
+- React.js
+- SASS
+- React-Router
+
+## Tested With:
+
+- Jest
+- Enzyme
+
+## License
+
+**[MIT](https://choosealicense.com/licenses/mit/)**
+
+---
+
+**[Back to top](https://github.com/MatthewKaplan/Jest-Do-It#jest-do-it)**
+
+---
