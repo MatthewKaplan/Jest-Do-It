@@ -10,11 +10,11 @@ Jest Do It is a flash card application that tests the user on their knowledge of
 
 | Home Page:  | Question: |
 | ------------- | ------------- |
-| <img src="https://i.imgur.com/c9lFr3A.jpg" alt="project test coverage" width="500" height="500" > | <img src="https://i.imgur.com/BQZa8sS.jpg" alt="project test coverage" width="500" height="500" > |
+| <img src="https://i.imgur.com/c9lFr3A.jpg" alt="project test coverage" width="500" height="300" > | <img src="https://i.imgur.com/BQZa8sS.jpg" alt="project test coverage" width="500" height="300" > |
 
 | Correct Answer:  | Leaderboard: |
 | ------------- | ------------- |
-| <img src="https://i.imgur.com/VWyRA0D.jpg" alt="project test coverage" width="500" height="500" > | <img src="https://i.imgur.com/XYklVpH.jpg" alt="project test coverage" width="500" height="500" > |
+| <img src="https://i.imgur.com/VWyRA0D.jpg" alt="project test coverage" width="500" height="300" > | <img src="https://i.imgur.com/XYklVpH.jpg" alt="project test coverage" width="500" height="300" > |
 
 
 ## Getting Started:
