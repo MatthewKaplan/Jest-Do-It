@@ -83,3 +83,14 @@
     opacity: .8;
   }
 }
+
+@media screen and (max-width: 414px) {
+  .questionCard .answerResponse h3 {
+    font-size: .8em;
+  }
+
+  .questionCard .cardAnswers {
+    grid-template-columns: 1fr;
+    grid-gap: 3px;
+  }
+}

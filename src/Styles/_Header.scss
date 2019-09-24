@@ -52,3 +52,13 @@
     }
   }
 }
+
+@media screen and (max-width: 414px) {
+  .mainHeader h1 {
+    font-size: 0em;
+  }
+
+  .mainHeader input {
+    width: 150px;
+  }
+}

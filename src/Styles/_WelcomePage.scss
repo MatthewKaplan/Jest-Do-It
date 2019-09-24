@@ -84,3 +84,28 @@
     }
   }
 }
+
+@media screen and (max-width: 414px) {
+  .welcomePage .backGround {
+    height: 445px;
+    .welcomeContent {
+      padding: 10px;
+      .nameInput {
+        width: 250px;
+        font-size: 18px;
+      }
+
+      .subHeader {
+        padding: 0.15em 15px .3em 15px;
+      }
+
+      .welcomeImg {
+        max-width: 300px;
+      }
+      
+      .welcomeHeader {
+        font-size: 46px;
+      }
+    } 
+  }
+}
