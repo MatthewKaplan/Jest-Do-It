@@ -1,4 +1,4 @@
-# Jest Do It
+# Jest Do It <img src="https://i.imgur.com/h5hvEDt.png" width="200" align="right" />
 
 Jest Do It is a flash card application that tests the user on their knowledge of the popular testing framework Jest. The application also includes a leaderboard so friends can challenge one another. When the user is finished answering all 30 questions they are given the opportunity to retake the ones they got wrong the first time around. 
 
@@ -7,6 +7,8 @@ Jest Do It is a flash card application that tests the user on their knowledge of
 [https://jest-do-it.netlify.com](https://jest-do-it.netlify.com)
 
 ## Preview:
+
+<img src="https://i.imgur.com/4dQmLoS.png" width="900" />
 
 | Home Page:  | Question: |
 | ------------- | ------------- |
